@@ -19,8 +19,15 @@ jobs:
           flutter-version: 3.29.2  # Atualize para a versão exata do seu projeto
           channel: stable
 
-      - name: Verificar versão do Flutter
-        run: flutter --version
+      - name: Configurar versão do Dart
+        run: flutter doctor -v
+
+      - name: Forçar versão correta do Flutter e Dart
+        run: |
+          flutter downgrade 3.29.2
+          flutter upgrade
+          flutter --version
+          dart --version
 
       - name: Instalar dependências do Flutter
         run: flutter pub get
