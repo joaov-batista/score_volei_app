@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'team_score.dart'; // Importando o widget TeamScore
+import 'team_score.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -38,7 +37,6 @@ class HomeScreenState extends State<HomeScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Time A
             Expanded(
               child: TeamScore(
                 teamName: nomeA,
@@ -61,7 +59,6 @@ class HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            // Container para os Sets de A
             Container(
               width: 60,
               height: 90,
@@ -89,47 +86,40 @@ class HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(width: 20),
-            // Botão para resetar os pontos com tamanho menor
             ElevatedButton(
               onPressed: resetScores,
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 8,
-                ), // Ajusta o padding
+                ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ), // Bordas arredondadas
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
               child: Icon(
                 Icons.restart_alt_sharp,
-                size: 24, // Tamanho do ícone menor
+                size: 24,
               ),
             ),
             SizedBox(width: 20),
-            // Botão para resetar os sets com tamanho menor
             ElevatedButton(
               onPressed: resetSets,
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 8,
-                ), // Ajusta o padding
+                ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ), // Bordas arredondadas
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
               child: Icon(
                 Icons.restore_rounded,
-                size: 24, // Tamanho do ícone menor
+                size: 24,
               ),
             ),
             SizedBox(width: 20),
-            // Container para os Sets de B
             Container(
               width: 60,
               height: 90,
