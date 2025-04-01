@@ -1,0 +1,37 @@
+name: Build iOS Flutter
+
+on:  
+  push:
+    branches:
+      - main  # Aciona a build quando houver um push na branch "main"
+
+jobs:
+  build_ios:
+    runs-on: macos-latest  # Usa um runner macOS
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.16.0  # Troque pela versão que está usando
+
+      - name: Instalar dependências
+        run: flutter pub get
+
+      - name: Configurar o projeto para iOS
+        run: |
+          cd ios
+          pod install
+          cd ..
+
+      - name: Build do app para iOS
+        run: flutter build ios --release --no-codesign
+
+      - name: Gerar artefato do build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: build/ios/iphoneos
