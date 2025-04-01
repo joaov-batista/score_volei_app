@@ -3,10 +3,10 @@ name: Build Flutter iOS
 on:
   push:
     branches:
-      - master  # ou 'main', conforme o seu branch principal
+      - main  # Usando 'main' no lugar de 'master', ajuste conforme o seu branch principal
   pull_request:
     branches:
-      - master  # ou 'main', conforme o seu branch principal
+      - main  # Usando 'main' aqui também
 
 jobs:
   build:
