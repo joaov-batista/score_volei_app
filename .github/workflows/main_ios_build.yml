@@ -3,11 +3,11 @@ name: Build iOS Flutter
 on:  
   push:
     branches:
-      - main  # Roda sempre que houver um push na branch "main"
+      - main  
 
 jobs:
   build_ios:
-    runs-on: macos-latest  # Usa um Mac da nuvem do GitHub
+    runs-on: macos-latest  
 
     steps:
       - name: Checkout do repositório
@@ -16,29 +16,20 @@ jobs:
       - name: Instalar Flutter na versão correta
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 3.29.2  # Atualize para a versão exata do seu projeto
+          flutter-version: 3.29.2  
           channel: stable
 
-      - name: Configurar versão do Dart
-        run: flutter doctor -v
-
-      - name: Forçar versão correta do Flutter e Dart
+      - name: Configurar versão do Dart corretamente
         run: |
+          echo "Forçando Dart correto..."
           flutter downgrade 3.29.2
           flutter upgrade
-          flutter --version
+          flutter doctor -v
           dart --version
+          flutter --version
 
       - name: Instalar dependências do Flutter
         run: flutter pub get
-
-      - name: Verificar e corrigir dependências do CocoaPods
-        run: |
-          sudo gem install cocoapods
-          cd ios
-          pod repo update
-          pod install
-          cd ..
 
       - name: Build do app para iOS
         run: flutter build ios --release --no-codesign
