@@ -6,7 +6,7 @@ on:
       - master  # ou 'main', conforme o seu branch principal
   pull_request:
     branches:
-      - master
+      - master  # ou 'main', conforme o seu branch principal
 
 jobs:
   build:
